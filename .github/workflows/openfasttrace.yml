@@ -1,0 +1,41 @@
+name: OpenFastTrace Requirement Tracing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  trace:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    
+    - name: Download OpenFastTrace
+      run: |
+        wget https://github.com/itsallcode/openfasttrace/releases/download/3.8.0/openfasttrace-3.8.0.jar -O openfasttrace.jar
+        chmod +x openfasttrace.jar
+    
+    - name: Run OpenFastTrace
+      run: |
+        java -jar openfasttrace.jar trace SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+    
+    - name: Generate HTML Report
+      run: |
+        java -jar openfasttrace.jar -o html -f trace-report.html trace SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+    
+    - name: Upload HTML Report as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: oft-trace-report
+        path: trace-report.html
+        retention-days: 30 
