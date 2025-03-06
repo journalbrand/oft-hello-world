@@ -20,11 +20,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     
-    - name: Download OpenFastTrace
-      run: |
-        wget https://github.com/itsallcode/openfasttrace/releases/download/3.8.0/openfasttrace-3.8.0.jar -O openfasttrace.jar
-        chmod +x openfasttrace.jar
-    
     - name: Run OpenFastTrace
       run: |
         java -jar openfasttrace.jar trace SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
