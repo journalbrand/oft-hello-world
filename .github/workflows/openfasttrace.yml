@@ -29,9 +29,10 @@ jobs:
       run: |
         java -jar openfasttrace.jar trace -o html -f trace-report.html .
     
-    - name: Upload HTML Report as Artifact
-      uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
-      with:
-        name: oft-trace-report
-        path: trace-report.html
-        retention-days: 30 
+    # Temporarily removing artifact upload as it's causing issues
+    # - name: Upload HTML Report as Artifact
+    #   uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+    #   with:
+    #     name: oft-trace-report
+    #     path: trace-report.html
+    #     retention-days: 30 
