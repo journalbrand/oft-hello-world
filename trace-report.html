@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+* {
+  font-family: helvetica, arial;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 0.5em 1em;
+  z-index: 100;
+  background-color: white;
+  border-bottom: 1px solid lightgrey;
+}
+
+main {
+  position: absolute;
+  margin-top: 2em;
+}
+
+del, ins, .red {
+  color: red;
+}
+
+.green {
+  color: limegreen;
+}
+
+p, h6 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+
+.in, .out {
+  display: flex;
+}
+
+.in ul, .out ul {
+  list-style: none;
+  padding-left: 1em;
+  flex: auto;
+}
+
+.in h6, .out h6 {
+  width: 4em;
+}
+
+.in li:before {
+  content: "\2192";
+  margin: 0 1em;
+}
+
+.out li:before {
+  content: "\2190";
+  margin: 0 1em;
+}
+
+.sitem {
+  border-left: 2px solid dimgrey;
+  margin-left: 4em;
+  padding-left: 1em;
+}
+
+.sitem h6 {
+  padding-left: 1em;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+.sitem p {
+  padding-left: 2em;
+}
+
+.sitem pre {
+  background: #EEEEEE;
+  margin: 2em;
+  padding: 0.5em 
+}
+.sitem ol, ul {
+  margin-left: 0em;
+  padding-left: 4em;
+  list-style-position: inside; 
+}
+
+.artifact {
+  border-radius: 1em;
+  background: dimgrey;
+  color: white;
+  padding: 0em 0.5em 0.25em 0.5em;
+  font-size: 65%;
+  vertical-align: middle;
+}
+
+.tag {
+  border-radius: 1em;
+  padding: 0.125em 0.5em 0.125em 0.5em;
+  border: 1px solid black;
+  font-size: 75%
+}
+
+.sitem .details {
+  display: none;
+}
+
+.sitem:hover .details {
+  display: block;
+}
+
+small {
+  color: dimgrey;
+}
+
+summary .title {
+  font-weight: bold;
+  color: black;
+}
+
+.id {
+  color: dimgrey;
+  font-size: 75%;
+  text-align: right;
+  border-top: 1px solid lightgrey;
+  font-family: courier;
+}
+
+.origin:before {
+  content: "\1F3AF";
+  margin: 0 0.5em;
+}
+
+.origin {
+  font-family: courier;
+}
+
+.sitem p.origin {
+  padding-left: 0.5em;
+}
+    </style>
+    <title>Specification items by artifact type</title>
+  </head>
+  <body>
+  <main>
+    <section id="impl">
+      <h3>impl</h3>
+      <section class="sitem" id="impl~custom-greeting-345084522~0">
+        <details>
+          <summary title="impl~custom-greeting-345084522~0"><span class="green">&check;</span> <b>custom-greeting-345084522</b><small>, rev. 0, impl</small></summary>
+          <p class="id">impl~custom-greeting-345084522~0</p>
+          <p class="origin">SimpleHello.java:16</p>
+          <div class="out">
+            <h6>Out: 1</h6>
+            <ul>
+              <li><a href="#req~custom-greeting~1">req~custom-greeting~1</a> <span class="origin">SimpleRequirement.md:14</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+      <section class="sitem" id="impl~hello-output-2126219600~0">
+        <details>
+          <summary title="impl~hello-output-2126219600~0"><span class="green">&check;</span> <b>hello-output-2126219600</b><small>, rev. 0, impl</small></summary>
+          <p class="id">impl~hello-output-2126219600~0</p>
+          <p class="origin">SimpleHello.java:15</p>
+          <div class="out">
+            <h6>Out: 1</h6>
+            <ul>
+              <li><a href="#req~hello-output~1">req~hello-output~1</a> <span class="origin">SimpleRequirement.md:4</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </section>
+    <section id="req">
+      <h3>req</h3>
+      <section class="sitem" id="req~hello-output~1">
+        <details>
+          <summary title="req~hello-output~1"><span class="green">&check;</span> <b>Basic Output</b><small>, rev. 1, req</small></summary>
+          <p class="id">req~hello-output~1</p>
+          <p>The program shall output "Hello, World!" when no name is provided.</p>
+          <h6>Rationale:</h6>
+          <p>This is the traditional behavior of a Hello World program.</p>
+          <h6>Needs: impl, utest</h6>
+          <p class="origin">SimpleRequirement.md:4</p>
+          <div class="in">
+            <h6>In: 2</h6>
+            <ul>
+              <li><a href="#impl~hello-output-2126219600~0">impl~hello-output-2126219600~0</a> <span class="origin">SimpleHello.java:15</span></li>
+              <li><a href="#utest~hello-output-4228649071~0">utest~hello-output-4228649071~0</a> <span class="origin">SimpleHelloTest.java:9</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+      <section class="sitem" id="req~custom-greeting~1">
+        <details>
+          <summary title="req~custom-greeting~1"><span class="green">&check;</span> <b>Customizable Greeting</b><small>, rev. 1, req</small></summary>
+          <p class="id">req~custom-greeting~1</p>
+          <p>The program shall output "Hello, [name]!" when a name is provided.</p>
+          <h6>Rationale:</h6>
+          <p>This demonstrates parameter handling in a simple way.</p>
+          <h6>Needs: impl, utest</h6>
+          <p class="origin">SimpleRequirement.md:14</p>
+          <div class="in">
+            <h6>In: 2</h6>
+            <ul>
+              <li><a href="#impl~custom-greeting-345084522~0">impl~custom-greeting-345084522~0</a> <span class="origin">SimpleHello.java:16</span></li>
+              <li><a href="#utest~custom-greeting-3526489872~0">utest~custom-greeting-3526489872~0</a> <span class="origin">SimpleHelloTest.java:19</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </section>
+    <section id="utest">
+      <h3>utest</h3>
+      <section class="sitem" id="utest~custom-greeting-3526489872~0">
+        <details>
+          <summary title="utest~custom-greeting-3526489872~0"><span class="green">&check;</span> <b>custom-greeting-3526489872</b><small>, rev. 0, utest</small></summary>
+          <p class="id">utest~custom-greeting-3526489872~0</p>
+          <p class="origin">SimpleHelloTest.java:19</p>
+          <div class="out">
+            <h6>Out: 1</h6>
+            <ul>
+              <li><a href="#req~custom-greeting~1">req~custom-greeting~1</a> <span class="origin">SimpleRequirement.md:14</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+      <section class="sitem" id="utest~hello-output-4228649071~0">
+        <details>
+          <summary title="utest~hello-output-4228649071~0"><span class="green">&check;</span> <b>hello-output-4228649071</b><small>, rev. 0, utest</small></summary>
+          <p class="id">utest~hello-output-4228649071~0</p>
+          <p class="origin">SimpleHelloTest.java:9</p>
+          <div class="out">
+            <h6>Out: 1</h6>
+            <ul>
+              <li><a href="#req~hello-output~1">req~hello-output~1</a> <span class="origin">SimpleRequirement.md:4</span></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </section>
+  </main>
+  <nav>
+    <span class="green">&check;</span> 6 total <meter value="6" max="6">100%</meter> | <a href="#impl">impl</a> &middot; <a href="#req">req</a> &middot; <a href="#utest">utest</a>  </nav>
+  </body>
+</html>

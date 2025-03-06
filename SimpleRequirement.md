@@ -10,6 +10,9 @@ This is the traditional behavior of a Hello World program.
 
 Needs: impl, utest
 
+Covers:
+- req~components-have-requirements~1
+
 ## Customizable Greeting
 `req~custom-greeting~1`
 
@@ -18,4 +21,7 @@ The program shall output "Hello, [name]!" when a name is provided.
 Rationale:
 This demonstrates parameter handling in a simple way.
 
-Needs: impl, utest 
+Needs: impl, utest
+
+Covers:
+- req~components-have-requirements~1 
