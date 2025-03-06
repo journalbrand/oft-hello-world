@@ -23,11 +23,11 @@ jobs:
     
     - name: Run OpenFastTrace
       run: |
-        java -jar openfasttrace.jar trace --report-verbosity minimal -i req SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+        java -jar openfasttrace.jar trace --report-verbosity minimal SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
     
     - name: Generate HTML Report
       run: |
-        java -jar openfasttrace.jar trace -o html -f trace-report.html -i req SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+        java -jar openfasttrace.jar trace -o html -f trace-report.html SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
     
     - name: Upload HTML Report as Artifact
       uses: actions/upload-artifact@v4
