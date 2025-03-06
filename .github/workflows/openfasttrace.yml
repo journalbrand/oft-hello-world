@@ -29,10 +29,9 @@ jobs:
       run: |
         java -jar openfasttrace.jar trace -o html -f trace-report.html SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
     
-    # Temporarily removing artifact upload as it's causing issues
-    # - name: Upload HTML Report as Artifact
-    #   uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
-    #   with:
-    #     name: oft-trace-report
-    #     path: trace-report.html
-    #     retention-days: 30 
+    - name: Upload HTML Report as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: oft-trace-report
+        path: trace-report.html
+        retention-days: 30 
