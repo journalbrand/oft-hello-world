@@ -7,6 +7,7 @@ This example demonstrates requirement tracing with OpenFastTrace (OFT) in a mini
 - `SimpleRequirement.md` - Contains two requirements for our Hello World program
 - `SimpleHello.java` - Implementation that covers both requirements
 - `SimpleHelloTest.java` - Unit tests that verify both requirements
+- `openfasttrace.jar` - The OpenFastTrace executable JAR file (included in the repo)
 - `.github/workflows/openfasttrace.yml` - GitHub Actions workflow to run OFT
 
 ## The Traceability Chain
@@ -87,13 +88,22 @@ This shows that all requirements are fully covered both in implementation and te
 
 This repository includes a GitHub Actions workflow (`.github/workflows/openfasttrace.yml`) that automatically:
 
-1. Sets up a Java environment
-2. Downloads OpenFastTrace
-3. Runs the trace to verify requirements are covered
+1. Checks out the code
+2. Sets up a Java environment
+3. Runs the trace using the included OpenFastTrace JAR file to verify requirements are covered
 4. Generates an HTML trace report
-5. Saves the HTML report as a GitHub Actions artifact
+5. Saves the report as a GitHub Actions artifact
 
 The workflow runs on every push to the main branch, on pull requests, or can be triggered manually.
+
+#### CI/CD Philosophy
+
+We've included the OpenFastTrace JAR file directly in the repository rather than downloading it during the workflow execution. This approach provides several benefits:
+
+1. **Reproducibility**: The exact same version is always used
+2. **Reliability**: No dependencies on external resources during CI runs
+3. **Speed**: No download time required during workflow execution
+4. **Versioning**: The JAR file is version-controlled alongside the code
 
 To view the HTML report:
 1. Go to the Actions tab in your GitHub repository
