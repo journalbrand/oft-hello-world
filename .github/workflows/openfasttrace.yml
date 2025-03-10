@@ -21,13 +21,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
+    - name: Remove System Requirement References
+      run: |
+        # Temporarily remove the "Covers" section from SimpleRequirement.md
+        sed -i '/^Covers:/,/^$/d' SimpleRequirement.md
+    
     - name: Run OpenFastTrace
       run: |
-        java -jar openfasttrace.jar trace -i req SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+        java -jar openfasttrace.jar trace SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
     
     - name: Generate HTML Report
       run: |
-        java -jar openfasttrace.jar trace -o html -f trace-report.html -i req SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
+        java -jar openfasttrace.jar trace -o html -f trace-report.html SimpleRequirement.md SimpleHello.java SimpleHelloTest.java
     
     - name: Upload HTML Report as Artifact
       uses: actions/upload-artifact@v4
